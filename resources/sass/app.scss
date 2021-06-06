@@ -1,0 +1,243 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+// Font Awesome
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import '~@fortawesome/fontawesome-free/scss/regular';
+@import '~@fortawesome/fontawesome-free/scss/brands';
+
+// Build
+/*** common ***/
+img {
+    width:100%;
+    height:100%;
+    display:inline-block;
+    object-fit: cover;
+}
+
+article {
+    width: 100%;
+    padding:0 5%;
+
+    // section_block
+    .section_block {
+        padding: 20px;
+
+        // section_title
+        .section_title {
+            margin:0 0 20px;
+            position:relative;
+            
+            &:after {
+                content:"";
+                position:absolute;
+                z-index:2;
+                left:0;
+                bottom:0;
+                display:block;
+                width:3em;
+                height:5px;
+                background:$mossgreen;
+                transition:.5s;
+                border-radius:50px;
+            }
+
+            &.inview {
+                &:after {
+                    width:5em;
+                    transition:.5s;
+                }
+            }
+
+            .en {
+                font-size:50px;
+                color: $mossgreen;
+                font-weight:bold;
+            }
+        }
+    }
+}
+/*** common ***/
+/*** header ***/
+header {
+
+    background:#006064;
+    
+    .menu_items {
+        .item {
+            a {
+                font-size:18px;
+                font-weight:bold;
+                padding:20px;
+                color:#fff;
+                display:block;
+            }
+        }
+    }
+}
+/*** header ***/
+/*** parts ***/
+/* inc */
+.privacy_policy_content {
+    .block {
+        margin:0 0 20px;
+
+        .block_title {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 0 0 5px;
+            border-bottom: 1px solid $mossgreen;
+            overflow: hidden;
+            position: relative;
+            padding-left: 30px;
+
+            &:before {
+                content: "";
+                display: block;
+                position: absolute;
+                width: 30px;
+                height: 200%;
+                background: $mossgreen;
+                left: -15px;
+                top: -50%;
+                transform: rotate(20deg);
+            }
+        }
+
+        .block_content {
+            &:nth-last-of-type(1) {
+                margin:0;
+            }
+
+            p:nth-last-of-type(1) {
+                margin:0;
+            }
+        }
+    }
+}
+
+/* button */
+.btn-primary {
+    background: $mossgreen; //ボタンの背景色
+    color: #fff; //ボタンのテキストの色
+}
+
+.btn-primary:hover, .btn-primary:focus, 
+.btn-primary:active, .btn-primary:active:focus, .btn-primary:active:hover, .btn-primary:active.focus,
+.btn-primary.active, .btn-primary.active:focus, .btn-primary.active:hover, .btn-primary.active.focus,
+.open > .dropdown-toggle.btn-primary, 
+.open > .dropdown-toggle.btn-primary:hover,
+.open > .dropdown-toggle.btn-primary:focus, 
+.open > .dropdown-toggle.btn-primary.focus,
+.btn-primary.disabled:hover, .btn-primary[disabled]:hover, fieldset[disabled] .btn-primary:hover,
+.btn-primary.disabled:focus, .btn-primary[disabled]:focus, fieldset[disabled] .btn-primary:focus,
+.btn-primary.disabled.focus, .btn-primary[disabled].focus, fieldset[disabled] .btn-primary.focus,
+.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
+.show > .btn-primary.dropdown-toggle {
+    background: #012114; //ボタンの上にポインタを持ってきたり、クリックしたりした時の背景色
+    color: #fff; //ボタンの上にポインタを持ってきたり、クリックしたりした時のテキストの色
+}
+
+
+.btn-primary.outline {
+    border: 3px solid $mossgreen; //アウトラインのみのボタンの線の色
+    color: $mossgreen; //アウトラインのみのボタンのテキストの色
+}
+
+/* input */
+.form-control[readonly] {
+    background: #fff;
+}
+
+/*** parts ***/
+/*** individual ***/
+/* top_page */
+#top_page {
+    /* about_me */
+    #about_me {
+        .illust_me {
+            border-radius:5px;
+            overflow:hidden;
+            transition:.3s;
+        }
+        
+        .profile {
+            
+            .item-title {
+                width: 5em;
+            }
+
+            .item-body {
+                text-indent: -1em;
+
+                &:before {
+                    content:"：";
+                }
+
+                .sns_icon {
+                    font-size:20px;
+                }
+            }
+        }
+    }
+
+    /* contact */
+    #contact {
+        form {
+            .privacy_policy {
+
+                .privacy_policy_text {
+                    height:100%;
+                    max-height:150px;
+                    background:#fff;
+                    overflow-y: scroll;
+                    padding: 20px;
+                    border: 1px solid #ced4da;
+                    border-bottom: 0;
+                    border-radius: 5px 5px 0 0;
+
+                    @include mq(lg) {
+                        max-height: 285px;
+                    }
+                }
+
+                .consent_checkbox {
+                    background:#eee;
+                    padding: 10px 0;
+                    border: 1px solid #ced4da;
+                    border-radius:0 0 5px 5px;
+
+                    label {
+                        &:hover {
+                            cursor:pointer;
+                        }
+                    }
+                }
+            }
+
+            .submit_button {
+                width: 100%;
+                max-width: 600px;
+                margin:0 auto;
+            }
+        }
+    }
+}
+
+/* blog_page */
+#blog_page {
+    .blog-title {
+        font-size:20px;
+        font-weight:bold;
+        margin:0 0 20px;
+        border-bottom:1px solid;
+    }
+}
+/*** individual ***/
