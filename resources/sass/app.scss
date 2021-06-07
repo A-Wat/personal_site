@@ -176,6 +176,7 @@ header {
 
             .item-body {
                 text-indent: -1em;
+                display:inherit;
 
                 &:before {
                     content:"：";

@@ -17262,6 +17262,7 @@ fieldset[disabled] .btn-primary.focus,
 
 #top_page #about_me .profile .item-body {
   text-indent: -1em;
+  display: inherit;
 }
 
 #top_page #about_me .profile .item-body:before {

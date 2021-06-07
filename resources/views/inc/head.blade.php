@@ -5,6 +5,9 @@
 
 <meta name="description" contents="{{ $description }}">
 
+<!-- fontawesome -->
+<script src="https://kit.fontawesome.com/b4d5664529.js" crossorigin="anonymous"></script>
+
 <!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
 

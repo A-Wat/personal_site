@@ -59,10 +59,10 @@
                                 <span class="item-title">ペット</span>
                                 <span class="item-body">うさぎ（うーちゃん）</span>
                             </li>
-                            <li class="list-group-item d-flex">
+                            <li class="list-group-item d-flex align-items-center">
                                 <span class="item-title">SNS</span>
                                 <span class="item-body">
-                                    <a href="https://twitter.com/Akkman5" class="d-inline-flex align-items-center" target="_blank"><i class="fab fa-twitter-square ml-3 mr-1 sns_icon"></i> @Akkman5</a>
+                                    <a href="https://twitter.com/Akkman5" class="d-inline-flex align-items-center" target="_blank"><i class="fab fa-twitter-square mr-1 sns_icon"></i> @Akkman5</a>
                                 </span>
                             </li>
                             <li class="list-group-item d-flex">
