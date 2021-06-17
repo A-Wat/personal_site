@@ -24,7 +24,7 @@
 <script>
     // スマホメニューボタン操作
     $(function(){
-        let spMenuButton = $('header .sp_menu_button');
+        let spMenuButton = $('header .sp_menu_button button');
         let menuItems = $('header .menu_items');
 
         spMenuButton.on('click', function(){
