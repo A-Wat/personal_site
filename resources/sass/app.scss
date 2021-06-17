@@ -24,7 +24,11 @@ img {
 
 article {
     width: 100%;
-    padding:0 5%;
+    padding:0 2%;
+
+    @include mq(md) {
+        padding:0 5%;
+    }
 
     // section_block
     .section_block {

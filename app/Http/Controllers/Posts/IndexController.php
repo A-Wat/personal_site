@@ -26,6 +26,10 @@ class IndexController extends Controller
 
         // レスポンスデータ
         $res = [
+            'heads' => [
+                'page_title' => $post_data->title,
+                'description' => ''
+            ],
             'id' => $post_data->id,
             'title' => $post_data->title,
             'content' => $post_data->content,

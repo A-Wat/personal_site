@@ -129,7 +129,7 @@
                 </div>
 
                 <div class="section_contents">
-                    <form class="d-flex flex-wrap justify-content-between row" method="POST" action="{{ url('/contact/conf') }}">
+                    <form class="row" method="POST" action="{{ url('/contact/conf') }}">
                         {{ csrf_field() }}
                         <div class="form_input_groups col-md-6">
                             <div class="form-group">
@@ -158,7 +158,9 @@
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-primary submit_button btn-lg mt-3">入力内容の確認</button>
+                        <div class="col-12 text-center">
+                            <button type="submit" class="btn btn-primary submit_button btn-lg mt-3">入力内容の確認</button>                        
+                        </div>
                     </form>
                 </div>
             </section>
