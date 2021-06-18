@@ -67,7 +67,8 @@
                             </li>
                             <li class="list-group-item d-flex">
                                 <span class="item-title">自己紹介</span>
-                                <span class="item-body">なんとかかんとか<br>あああああ</span>
+                                <span class="item-body">フリーランスWEBエンジニアをやってます！フットワークの軽さを売りに、誰とでも快く一緒に仕事ができるよう心がけています！<br>
+                                WEBサービスやWEBサイトの企画から開発までオールラウンドに対応します。ベストなWEB開発ができるようPHP系統技術とJavascript系統技術を追い求めていきます！</span>
                             </li>
                         </ul>
                     </div>
