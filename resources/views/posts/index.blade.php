@@ -23,7 +23,7 @@
             </section>
 
             <!-- Contact -->
-            <section class="section_block">
+            <section id="contact" class="section_block">
                 <div class="section_title inview_target">
                     <div class="en">Contact</div>
                 </div>

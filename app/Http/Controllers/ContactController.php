@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use PHPMailer\PHPMailer;
+use App\Http\Requests\ContactRequest;
 
 class ContactController extends Controller
 {
@@ -12,26 +13,29 @@ class ContactController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function conf(Request $req)
+    public function conf(ContactRequest $req)
     {
         // POSTされたデータを取得
         $name = $req->name;
         $email = $req->email;
         $inquiry = $req->inquiry;
 
-        // セッションに保持
-        $req->session()->put("name", $name);
-        $req->session()->put("email", $email);
-        $req->session()->put("inquiry", $inquiry);
+        // 戻り先URL
+        $previous_url = app('url')->previous();
 
         // レスポンスデータ
         $res = [
-            "name" => ($name)? $name : "",
-            "email" => ($email)? $email : "",
-            "inquiry" => ($inquiry)? $inquiry : ""
+            'heads' => [
+                'page_title' => '問い合わせ内容確認',
+                'description' => ''
+            ],
+            'name' => ($name)? $name : '',
+            'email' => ($email)? $email : '',
+            'inquiry' => ($inquiry)? $inquiry : '',
+            'previous_url' => $previous_url
         ];
-
-        return view("contact.conf", $res);
+        
+        return view('contact.conf', $res);
     }
 
     /**
@@ -39,70 +43,82 @@ class ContactController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function done(Request $req)
+    public function done(ContactRequest $req)
     {
+        if($req->get('action') == 'back') {
+            // 戻り先URLを取得
+            $previous_url = $req->get('previous_url');
+
+            return redirect($previous_url. '#contact')->withInput();
+            exit;
+        }
 
         if(
-            session()->get("name") &&
-            session()->get("email")
+            $req->name ||
+            $req->email ||
+            $req->inquiry
         ) {
             
             // メール内容
             $mail_content = array(
-                "name" => session()->get("name"),
-                "email" => session()->get("email"),
-                "inquiry" => session()->get("inquiry")
+                'name' => $req->name,
+                'email' => $req->email,
+                'inquiry' => $req->inquiry
             );
-
-            // 関連セッションを破棄
-            session()->forget("name");
-            session()->forget("email");
-            session()->forget("inquiry");
             
             // PHP Mailer（あとで分離する）
             $mail = new PHPMailer\PHPMailer(true);
 
             // Setting
             $mail->isSMTP();
-            $mail->Host = config("mail.mailers.smtp.host");
+            $mail->Host = config('mail.mailers.smtp.host');
             $mail->SMTPAuth = true;
-            $mail->Username = config("mail.mailers.smtp.username");
-            $mail->Password = config("mail.mailers.smtp.password");
-            $mail->SMTPSecure = config("mail.mailers.smtp.encryption");
-            $mail->Port = config("mail.mailers.smtp.port");
-            $mail->CharSet = "UTF-8";
+            $mail->Username = config('mail.mailers.smtp.username');
+            $mail->Password = config('mail.mailers.smtp.password');
+            $mail->SMTPSecure = config('mail.mailers.smtp.encryption');
+            $mail->Port = config('mail.mailers.smtp.port');
+            $mail->CharSet = 'UTF-8';
 
             // From email address and name
-            $mail->From = config("mail.from.address");
-            $mail->FromName = config("mail.from.name");
+            $mail->From = config('mail.from.address');
+            $mail->FromName = config('mail.from.name');
 
             // To address and name
-            $mail->addAddress($mail_content["email"], $mail_content["name"]);
+            $mail->addAddress($mail_content['email'], $mail_content['name']);
 
             $mail->isHTML(true);
 
-            $mail->Subject = "[自動返信メール] お問い合わせありがとうございます。 [".date("Y-m-d H:i:s")."]";
-            $mail->Body = $mail_content["name"]." 様<br>
+            $mail->Subject = '[自動返信メール] お問い合わせありがとうございます。 ['.date('Y-m-d H:i:s').']';
+            $mail->Body = $mail_content['name'].' 様<br>
             <br>
             この度はお問い合わせ頂きましてありがとうございます。<br>
             以下の内容でお問い合わせ頂きました。<br>
             <br>
             ----------------------------------------<br>
-            お名前：".$mail_content["name"]."<br>
-            メールアドレス：".$mail_content["email"]."<br>
-            お問い合わせ内容：".$mail_content["inquiry"]."<br>
+            お名前：'.$mail_content['name'].'<br>
+            メールアドレス：'.$mail_content['email'].'<br>
+            お問い合わせ内容：'.$mail_content['inquiry'].'<br>
             ----------------------------------------<br>
             <br>
-            内容を確認次第ご連絡させて頂きます。";
+            内容を確認次第ご連絡させて頂きます。';
 
             if(!$mail->send()) {
                 // エラーページへリダイレクト
-                return redirect("/contact/error");
+                return redirect('/contact/error');
             }
         } else {
             // 適切なセッション情報を持たない場合はトップページへリダイレクト
-            return redirect("/");
+            return redirect('/');
         }
-        return view("contact.done");
+
+        // レスポンスデータ
+        $res = [
+            'heads' => [
+                'page_title' => '問い合わせ完了',
+                'description' => ''
+            ],
+        ];
+
+        return view('contact.done', $res);
     }
 }

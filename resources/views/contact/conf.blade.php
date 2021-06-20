@@ -1,22 +1,14 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Laravel2</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
-
-        <!-- CSS -->
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
-    
-        <!-- JS -->
-        <script src="{{ asset('js/app.js') }}"></script>
+        @include('inc.head', $heads)
 
     </head>
     <body id="contact_conf_page">
+        @include('inc.header')
+
+        {{ Breadcrumbs::render('contact.conf') }}
+
         <article>
             <!-- Confirm -->
             <section class="section_block contact">
@@ -42,21 +34,22 @@
 
                             <div class="form-group">
                                 <label for="form-item-inquiry">お問い合わせ内容</label>
-                                <textarea class="form-control" id="form-item-inquiry" rows="5" readonly>{{ $inquiry }}</textarea>
+                                <textarea class="form-control" name="inquiry" id="form-item-inquiry" rows="5" readonly>{{ $inquiry }}</textarea>
                             </div>
                         </div>
 
                         <div class="form_button_group d-flex justify-content-between mt-4">
-                            <a href="{{ url('/#contact') }}" class="btn btn-secondary back_button btn-lg">戻る</a>
-                            <button class="btn btn-primary submit_button btn-lg">この内容で送信</button>
+                            <button name="action" class="btn btn-secondary back_button btn-lg" value="back">戻る</a>
+                            <button name="action" class="btn btn-primary submit_button btn-lg" value="submit">この内容で送信</button>
                         </div>
+
+                        <input type="hidden" name="previous_url" value="{{ $previous_url }}">
                     </form>
                 </div>
             </section>
         </article>
 
-        <footer>
-            <small class="d-flex justify-content-center">Copyright&copy; All Right Reserved.</small>
-        </footer>
+        @include('inc.footer')
+
     </body>
 </html>

@@ -1,22 +1,13 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Laravel2</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
-
-        <!-- CSS -->
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
-    
-        <!-- JS -->
-        <script src="{{ asset('js/app.js') }}"></script>
+        @include('inc.head', $heads)
 
     </head>
     <body id="contact_conf_page">
+        @include('inc.header')
+
+        {{ Breadcrumbs::render('contact.done') }}
         <article>
             <!-- Confirm -->
             <section class="section_block contact">
@@ -35,8 +26,7 @@
             </section>
         </article>
 
-        <footer>
-            <small class="d-flex justify-content-center">Copyright&copy; All Right Reserved.</small>
-        </footer>
+        @include('inc.footer')
+
     </body>
 </html>

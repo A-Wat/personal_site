@@ -4,16 +4,25 @@
         <div class="form-group">
             <label for="form-item-name">お名前</label>
             <input type="text" class="form-control" name="name" id="form-item-name" value="{{ old('name') }}" required>
+        @if($errors->first('name'))
+            <div class="alert alert-danger mt-2">{{ $errors->first('name') }}</div>
+        @endif
         </div>
 
         <div class="form-group">
             <label for="form-item-email">メールアドレス</label>
             <input type="email" class="form-control" name="email" id="form-item-email" value="{{ old('email') }}" required>
+        @if($errors->first('email'))
+            <div class="alert alert-danger mt-2">{{ $errors->first('email') }}</div>
+        @endif
         </div>
 
         <div class="form-group">
             <label for="form-item-inquiry">お問い合わせ内容</label>
             <textarea class="form-control" name="inquiry" id="form-item-inquiry" rows="5">{{ old('inquiry') }}</textarea>
+        @if($errors->first('textarea'))
+            <div class="alert alert-danger mt-2">{{ $errors->first('textarea') }}</div>
+        @endif
         </div>
     </div>
 

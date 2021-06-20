@@ -20,6 +20,19 @@ Breadcrumbs::for('posts.index', function ($trail, $id, $title) {
     $trail->push($title, route('posts.index', ['id' => $id]));
 });
 
+/* Contact */
+// conf
+Breadcrumbs::for('contact.conf', function ($trail) {
+    $trail->parent('index');
+    $trail->push('問い合わせ内容確認', route('contact.conf'));
+});
+
+// done
+Breadcrumbs::for('contact.done', function ($trail) {
+    $trail->parent('index');
+    $trail->push('問い合わせ完了', route('contact.done'));
+});
+
 /*
     Dashboard
 */

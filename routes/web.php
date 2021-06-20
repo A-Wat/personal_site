@@ -32,10 +32,10 @@ Route::get('/posts/{id}', 'Posts\IndexController@index')->name('posts.index');
     Contact
 */
 // conf
-Route::post('/contact/conf', 'ContactController@conf')->name('conf');
+Route::post('/contact/conf', 'ContactController@conf')->name('contact.conf');
 
 // done
-Route::post('/contact/done', 'ContactController@done')->name('done');
+Route::post('/contact/done', 'ContactController@done')->name('contact.done');
 
 // 以下認証領域 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 Auth::routes();
