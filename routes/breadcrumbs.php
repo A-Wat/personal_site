@@ -25,7 +25,7 @@ Breadcrumbs::for('posts.index', function ($trail, $id, $title) {
 */
 // Dashboard
 Breadcrumbs::for('dashboard', function ($trail) {
-    $trail->push('ダッシュボード', route('dashboard'));
+    $trail->push('ダッシュボード', route('dashboard.index'));
 });
 
 /* Posts */
@@ -57,4 +57,11 @@ Breadcrumbs::for('dashboard.posts.create.done', function ($trail) {
 Breadcrumbs::for('dashboard.posts.edit.index', function ($trail, $id) {
     $trail->parent('dashboard');
     $trail->push('投稿編集', route('dashboard.posts.edit.index', ['id' => $id]));
+});
+
+/* Skills */
+// list
+Breadcrumbs::for('dashboard.skills.list', function ($trail) {
+    $trail->parent('dashboard');
+    $trail->push('スキル一覧', route('dashboard.skills.list'));
 });

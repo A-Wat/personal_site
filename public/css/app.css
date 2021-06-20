@@ -17252,7 +17252,6 @@ fieldset[disabled] .btn-primary.focus,
 
 #top_page {
   /* about_me */
-  /* contact */
 }
 
 #top_page #about_me .illust_me {
@@ -17279,7 +17278,18 @@ fieldset[disabled] .btn-primary.focus,
   font-size: 20px;
 }
 
-#top_page #contact form .privacy_policy .privacy_policy_text {
+/* blog_page */
+
+#blog_page .blog-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0 0 20px;
+  border-bottom: 1px solid;
+}
+
+/* contact */
+
+form.contact_form .privacy_policy .privacy_policy_text {
   height: 100%;
   max-height: 150px;
   background: #fff;
@@ -17291,35 +17301,26 @@ fieldset[disabled] .btn-primary.focus,
 }
 
 @media screen and (min-width: 992px) {
-  #top_page #contact form .privacy_policy .privacy_policy_text {
+  form.contact_form .privacy_policy .privacy_policy_text {
     max-height: 285px;
   }
 }
 
-#top_page #contact form .privacy_policy .consent_checkbox {
+form.contact_form .privacy_policy .consent_checkbox {
   background: #eee;
   padding: 10px 0;
   border: 1px solid #ced4da;
   border-radius: 0 0 5px 5px;
 }
 
-#top_page #contact form .privacy_policy .consent_checkbox label:hover {
+form.contact_form .privacy_policy .consent_checkbox label:hover {
   cursor: pointer;
 }
 
-#top_page #contact form .submit_button {
+form.contact_form .submit_button {
   width: 100%;
   max-width: 600px;
   margin: 0 auto;
-}
-
-/* blog_page */
-
-#blog_page .blog-title {
-  font-size: 20px;
-  font-weight: bold;
-  margin: 0 0 20px;
-  border-bottom: 1px solid;
 }
 
 /*** individual ***/

@@ -21,6 +21,19 @@
                     </div>
                 </div>
             </section>
+
+            <!-- Contact -->
+            <section class="section_block">
+                <div class="section_title inview_target">
+                    <div class="en">Contact</div>
+                </div>
+
+                <div class="section_contents">
+                    <p>お仕事のご依頼、各種ご相談、その他すべてのお問い合わせにつきましては下記のフォームからご連絡ください。</p>
+
+                    @include('inc.contact_form')
+                </div>
+            </section>
         </article>
 
         @include('inc.footer')

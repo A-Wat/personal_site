@@ -40,7 +40,7 @@ Route::post('/contact/done', 'ContactController@done')->name('done');
 // 以下認証領域 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 Auth::routes();
 
-Route::get('/dashboard', 'Dashboard\TopController@index')->name('dashboard');
+Route::get('/dashboard', 'Dashboard\TopController@index')->name('dashboard.index');
 
 /*
     Posts(Blog)
@@ -62,3 +62,15 @@ Route::get('/dashboard/posts/edit/{id}', 'Dashboard\Posts\EditController@index')
 
 // edit / conf
 Route::post('/dashboard/posts/edit/{id}/conf', 'Dashboard\Posts\EditController@conf')->name('dashboard.posts.edit.conf');
+
+/*
+    Skills
+*/
+// list
+Route::get('/dashboard/skills/list', 'Dashboard\Skills\ListController@index')->name('dashboard.skills.list');
+
+// create / index
+Route::get('/dashboard/skills/create', 'Dashboard\Skills\CreateController@index')->name('dashboard.skills.create.index');
+
+// create / conf
+Route::post('/dashboard/skills/create/conf', 'Dashboard\Skills\CreateController@conf')->name('dashboard.skills.create.conf');

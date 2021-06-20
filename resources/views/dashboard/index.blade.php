@@ -22,6 +22,23 @@
 
         <div class="col-md-4">
             <div class="card">
+                <div class="card-header">Skills</div>
+
+                <div class="card-body p-0">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <a href="{{ url('/dashboard/skills/create') }}">新規投稿</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="{{ url('/dashboard/skills/list') }}">投稿記事一覧</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
                 <div class="card-header">Work</div>
 
                 <div class="card-body p-0">
