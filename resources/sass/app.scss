@@ -202,6 +202,19 @@ header {
         margin:0 0 20px;
         border-bottom:1px solid;
     }
+
+    .blog-content {
+        .code_snipet {
+            padding: 20px;
+            background:#444;
+            color:#fff;
+            margin:0 0 20px;
+
+            p {
+                margin:0;
+            }
+        }
+    }
 }
 
 /* contact */

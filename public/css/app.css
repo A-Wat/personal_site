@@ -17287,6 +17287,17 @@ fieldset[disabled] .btn-primary.focus,
   border-bottom: 1px solid;
 }
 
+#blog_page .blog-content .code_snipet {
+  padding: 20px;
+  background: #444;
+  color: #fff;
+  margin: 0 0 20px;
+}
+
+#blog_page .blog-content .code_snipet p {
+  margin: 0;
+}
+
 /* contact */
 
 form.contact_form .privacy_policy .privacy_policy_text {
