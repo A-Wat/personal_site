@@ -32,8 +32,7 @@ class EditController extends Controller
         $id = $req->id;
 
         // 記事情報取得
-        $post = new Post();
-        $post_data = $post::find($id);
+        $post_data = Post::find($id);
 
         // 対象の記事がない場合は、ブログ一覧にリダイレクト
         if(!$post_data) {
@@ -61,13 +60,33 @@ class EditController extends Controller
         $content = $req->content;
         $eyecatch = $req->eyecatch;
 
-        // 記事を更新してみる
-        $post = new Post();
-        $target = $post::find($id);
-        $target->title = $title;
-        $target->content = $content;
-        $target->save();
+        // レスポンスデータ
+        $res = [
+            'id' => $id,
+            'title' => $title,
+            'content' => $content,
+            'eyecatch_path' => ''
+        ];
 
-        exit;
+        return view('dashboard.posts.edit.conf', $res);
+    }
+
+    public function done(PostRequest $req)
+    {
+        // 戻るボタンが押されたとき
+        if($req->get('action') == 'back') {
+            return redirect()->route('dashboard.posts.edit.index', ['id' => $req->id])->withInput();
+            exit;
+        }
+
+        // 変更を保存
+        Post::where('id', $req->id)
+            ->update([
+                'title' => $req->title,
+                'content' => $req->content,
+                'eyecatch' => ''
+            ]);
+
+        return view('dashboard.posts.edit.done');
     }
 }

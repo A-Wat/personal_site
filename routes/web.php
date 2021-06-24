@@ -63,6 +63,9 @@ Route::get('/dashboard/posts/edit/{id}', 'Dashboard\Posts\EditController@index')
 // edit / conf
 Route::post('/dashboard/posts/edit/{id}/conf', 'Dashboard\Posts\EditController@conf')->name('dashboard.posts.edit.conf');
 
+// edit / done
+Route::post('/dashboard/posts/edit/{id}/done', 'Dashboard\Posts\EditController@done')->name('dashboard.posts.edit.done');
+
 /*
     Skills
 */

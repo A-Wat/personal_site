@@ -88,13 +88,11 @@ class CreateController extends Controller
         $eyecatch = session()->get('eyecatch_path');
 
         // postsに保存
-        $post = new Post();
-        $post->fill([
+        Post::create([
             'title' => $title,
             'content' => $content,
-            'eyecatch' => $eyecatch,
+            'eyecatch' => $eyecatch
         ]);
-        $post->save();
 
         // 関連セッションを削除
         session()->forget('title');

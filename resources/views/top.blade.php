@@ -83,7 +83,7 @@
 
                 <div class="section_contents row">
                 @foreach($posts as $post)
-                    <div class="col-lg-4 col-md-6 mb-3">
+                    <div class="col-lg-4 col-md-6 mb-4">
                         <div class="card">
                             <a href="{{ url('/posts/' . $post->id) }}">
                                 <img class="card-img-top\" src="{{ asset($post->eyecatch) }}" alt="{{ $post->title }} サムネイル" onerror="src='https://pro-foto.jp/img/f_25_topimg.jpg'">

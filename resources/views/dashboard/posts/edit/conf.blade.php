@@ -8,7 +8,7 @@
                 <div class="card-header">新規投稿 - 入力内容確認</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ url('/dashboard/posts/create/done') }}">
+                    <form method="POST" action="{{ url('/dashboard/posts/edit/'. $id .'/done') }}">
                         {{ csrf_field() }}
                         <div class="form_input_groups">
                             <div class="form-group">
@@ -18,7 +18,8 @@
 
                             <div class="form-group">
                                 <label for="form-item-content">本文</label>
-                                <div>{!! $content !!}</div>
+                                {!! $content !!}
+                                <textarea name="content" style="opacity:0;height:0;width:0;padding:0;margin:0;">{{ $content }}</textarea>
                             </div>
 
                         @if($eyecatch_path)
@@ -26,6 +27,7 @@
                                 <label>アイキャッチ画像</label>
                                 <figure>
                                     <img src="{{ asset($eyecatch_path) }}">
+                                    <input type="hidden" name="eyecatch_path" value="{{ $eyecatch_path }}">
                                 </figure>
                             </div>
                         @endif
@@ -33,8 +35,8 @@
                         </div>
 
                         <div class="d-flex justify-content-between mt-3">
-                            <a href="{{ url('/dashboard/posts/create') }}" class="btn btn-secondary btn-lg">戻る</a>
-                            <button type="submit" class="btn btn-primary submit_button btn-lg">この内容で投稿</button>
+                            <button name="action" href="{{ url('/dashboard/posts/create') }}" class="btn btn-secondary btn-lg" value="back">戻る</a>
+                            <button name="action" type="submit" class="btn btn-primary submit_button btn-lg" value="submit">この内容で投稿</button>
                         </div>
 
                     </form>

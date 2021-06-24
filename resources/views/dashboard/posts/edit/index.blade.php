@@ -30,12 +30,12 @@
 
                             <div class="form-group">
                                 <label for="form-item-title">タイトル</label>
-                                <input type="text" class="form-control" name="title" id="form-item-title" value="{{ $title }}" required>
+                                <input type="text" class="form-control" name="title" id="form-item-title" value="{{ old('title', $title) }}" required>
                             </div>
 
                             <div class="form-group">
                                 <label for="form-item-content">本文</label>
-                                <textarea class="form-control" name="content" id="summernote" cols="30" rows="10" required>{{ $content }}</textarea>
+                                <textarea class="form-control" name="content" id="summernote" cols="30" rows="10" required>{{ old('content', $content) }}</textarea>
                             </div>
 
                             <div class="form-group">

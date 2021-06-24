@@ -8,7 +8,7 @@
 <div class="container">
     <div class="row justify-content-start">
     @forelse($posts as $post)
-        <div class="col-md-4">
+        <div class="col-lg-4 col-md-6 mb-4">
             <a href="{{ url('/dashboard/posts/edit/' . $post->id) }}">
                 <div class="card">
                     <img src="{{ asset($post->eyecatch_path) }}" class="card-img-top" onerror="this.src='https://pro-foto.jp/img/f_25_topimg.jpg';">
