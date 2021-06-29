@@ -17090,7 +17090,6 @@ readers do not read off random characters that represent icons */
 
 img {
   width: 100%;
-  height: 100%;
   display: inline-block;
   -o-object-fit: cover;
      object-fit: cover;
