@@ -77,3 +77,31 @@ Route::get('/dashboard/skills/create', 'Dashboard\Skills\CreateController@index'
 
 // create / conf
 Route::post('/dashboard/skills/create/conf', 'Dashboard\Skills\CreateController@conf')->name('dashboard.skills.create.conf');
+
+
+/*
+    Sitemap
+*/
+Route::get('sitemap', function(){
+
+    // create new sitemap object
+    $sitemap = App::make("sitemap");
+
+    // add items to the sitemap (url, date, priority, freq)
+    $sitemap->add(URL::to('/'), date('Y-m-d H:i:s'), '1.0', 'daily');
+    $sitemap->add(URL::to('/posts/list'), date('Y-m-d H:i:s'), '0.9', 'weekly');
+
+    // get all posts from db
+    $posts = DB::table('posts')->orderBy('created_at', 'desc')->get();
+
+    // add every post to the sitemap
+    foreach ($posts as $post)
+    {
+        $sitemap->add(URL::to('/posts/'. $post->id));
+    }
+
+    // generate your sitemap (format, filename)
+    $sitemap->store('xml', 'sitemap');
+    // this will generate file sitemap.xml to your public folder
+
+});
