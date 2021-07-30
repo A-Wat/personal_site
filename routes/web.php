@@ -97,7 +97,7 @@ Route::get('sitemap', function(){
     // add every post to the sitemap
     foreach ($posts as $post)
     {
-        $sitemap->add(URL::to('/posts/'. $post->id));
+        $sitemap->add(URL::to('/posts/'. $post->id), $post->created_at, '0.9', 'weekly');
     }
 
     // generate your sitemap (format, filename)
